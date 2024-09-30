@@ -200,7 +200,7 @@ Tabela ima cenik za dogovorjeno moč, glede na uporabniško skupino in časovni 
             <td>0.00000</td>
         </tr>
         <tr>
-            <td rowspan=5>3</td>
+            <td rowspan=5>2</td>
             <td>1</td>
             <td>3.46560</td>
         </tr>
@@ -221,7 +221,7 @@ Tabela ima cenik za dogovorjeno moč, glede na uporabniško skupino in časovni 
             <td>0.00000</td>
         </tr>
         <tr>
-            <td rowspan=5>4</td>
+            <td rowspan=5>3</td>
             <td>1</td>
             <td>1.30327</td>
         </tr>
@@ -242,7 +242,7 @@ Tabela ima cenik za dogovorjeno moč, glede na uporabniško skupino in časovni 
             <td>0.00000</td>
         </tr>
         <tr>
-            <td rowspan=5>5</td>
+            <td rowspan=5>4</td>
             <td>1</td>
             <td>0.26093</td>
         </tr>
@@ -319,7 +319,7 @@ Tabela ima cenik za obremenitev omrežja, glede na uporabniško skupino in časo
             <td>0.00739</td>
         </tr>
         <tr>
-            <td rowspan=5>3</td>
+            <td rowspan=5>2</td>
             <td>1</td>
             <td>0.00580</td>
         </tr>
@@ -340,7 +340,7 @@ Tabela ima cenik za obremenitev omrežja, glede na uporabniško skupino in časo
             <td>0.00536</td>
         </tr>
         <tr>
-            <td rowspan=5>4</td>
+            <td rowspan=5>3</td>
             <td>1</td>
             <td>0.00131</td>
         </tr>
@@ -361,7 +361,7 @@ Tabela ima cenik za obremenitev omrežja, glede na uporabniško skupino in časo
             <td>0.00125</td>
         </tr>
         <tr>
-            <td rowspan=5>5</td>
+            <td rowspan=5>4</td>
             <td>1</td>
             <td>0.00035</td>
         </tr>
