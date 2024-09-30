@@ -1,0 +1,171 @@
+{
+    "iso2": "SI",
+    "name": "Slovenia",
+    "price":
+    [
+        {
+            "validFrom": "2024-10-01",
+            "validTo": "2024-12-31",
+            "prices":
+            [
+                {
+                    "userGroup": 0,
+                    "blokPrice":
+                    [
+                        {
+                            "blokID": 1,
+                            "pricePerkW": 3.36401,
+                            "pricePerkWh": 0.01295
+                        },
+                        {
+                            "blokID": 2,
+                            "pricePerkW": 0.83363,
+                            "pricePerkWh": 0.01224
+                        },
+                        {
+                            "blokID": 3,
+                            "pricePerkW": 0.18034,
+                            "pricePerkWh": 0.01248
+                        },
+                        {
+                            "blokID": 4,
+                            "pricePerkW": 0.01278,
+                            "pricePerkWh": 0.01246
+                        },
+                        {
+                            "blokID": 5,
+                            "pricePerkW": 0.00000,
+                            "pricePerkWh": 0.01258
+                        }
+                    ]
+                },
+                {
+                    "userGroup": 1,
+                    "blokPrice":
+                    [
+                        {
+                            "blokID": 1,
+                            "pricePerkW": 4.67504,
+                            "pricePerkWh": 0.00783
+                        },
+                        {
+                            "blokID": 2,
+                            "pricePerkW": 0.96277,
+                            "pricePerkWh": 0.00739
+                        },
+                        {
+                            "blokID": 3,
+                            "pricePerkW": 0.12399,
+                            "pricePerkWh": 0.00757
+                        },
+                        {
+                            "blokID": 4,
+                            "pricePerkW": 0.00286,
+                            "pricePerkWh": 0.00733
+                        },
+                        {
+                            "blokID": 5,
+                            "pricePerkW": 0.00000,
+                            "pricePerkWh": 0.00739
+                        }
+                    ]
+                },
+                {
+                    "userGroup": 2,
+                    "blokPrice":
+                    [
+                        {
+                            "blokID": 1,
+                            "pricePerkW": 3.46560,
+                            "pricePerkWh": 0.00580
+                        },
+                        {
+                            "blokID": 2,
+                            "pricePerkW": 0.73704,
+                            "pricePerkWh": 0.00541
+                        },
+                        {
+                            "blokID": 3,
+                            "pricePerkW": 0.08953,
+                            "pricePerkWh": 0.00555
+                        },
+                        {
+                            "blokID": 4,
+                            "pricePerkW": 0.00000,
+                            "pricePerkWh": 0.00530
+                        },
+                        {
+                            "blokID": 5,
+                            "pricePerkW": 0.00000,
+                            "pricePerkWh": 0.00536
+                        }
+                    ]
+                },
+                {
+                    "userGroup": 3,
+                    "blokPrice":
+                    [
+                        {
+                            "blokID": 1,
+                            "pricePerkW": 1.30327,
+                            "pricePerkWh": 0.00131
+                        },
+                        {
+                            "blokID": 2,
+                            "pricePerkW": 0.28939,
+                            "pricePerkWh": 0.00129
+                        },
+                        {
+                            "blokID": 3,
+                            "pricePerkW": 0.03807,
+                            "pricePerkWh": 0.00128
+                        },
+                        {
+                            "blokID": 4,
+                            "pricePerkW": 0.00000,
+                            "pricePerkWh": 0.00126
+                        },
+                        {
+                            "blokID": 5,
+                            "pricePerkW": 0.00000,
+                            "pricePerkWh": 0.00125
+                        }
+                    ]
+                },
+                {
+                    "userGroup": 4,
+                    "blokPrice":
+                    [
+                        {
+                            "blokID": 1,
+                            "pricePerkW": 0.26093,
+                            "pricePerkWh": 0.00035
+                        },
+                        {
+                            "blokID": 2,
+                            "pricePerkW": 0.07313,
+                            "pricePerkWh": 0.00035
+                        },
+                        {
+                            "blokID": 3,
+                            "pricePerkW": 0.00951,
+                            "pricePerkWh": 0.00035
+                        },
+                        {
+                            "blokID": 4,
+                            "pricePerkW": 0.00000,
+                            "pricePerkWh": 0.00035
+                        },
+                        {
+                            "blokID": 5,
+                            "pricePerkW": 0.00000,
+                            "pricePerkWh": 0.00035
+                        }
+                    ]
+                }
+            ]
+            
+        }
+    ]
+}
+
