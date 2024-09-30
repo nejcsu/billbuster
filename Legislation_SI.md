@@ -1,3 +1,4 @@
+
 # Legislation - SI (Slovenia)
 
 ## Pravna podlaga:
@@ -146,10 +147,242 @@ Uporabniške skupine so definirane v 7. členu Akta o metodologiji za obračunav
 Cenik omrežnine definira Akt o določitvi tarifnih postavk za omrežnine elektrooperaterjev. Akt vsebuje cenik za prenosno in distribucijsko omrežje, ki velja od 1.10.2024 in velja do vključno 31.12.2024. V tem dokumentu se bomo usmerili na distribucijsko omrežje, ki ga uporabljamo končni uporabniki (1. člen, sekcija c):
 
 Tabela ima cenik za dogovorjeno moč, glede na uporabniško skupino in časovni blok:
-TODO: Tabela
 
-Tabela ima cenik za porabljeno električno energijo, glede na uporabniško skupino in časovni blok:
-TODO: Tabela
+<table>
+    <thead>
+        <tr>
+            <th>Uporabniška skupina</th>
+            <th>Časovni Blok</th>
+            <th>Tarifna postavka za moč<br>[EUR/kW/mesec]</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td rowspan=5>0</td>
+            <td>1</td>
+            <td>3.36401</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>0.83363</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>0.18034</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>0.01278</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>0.00000</td>
+        </tr>
+        <tr>
+            <td rowspan=5>1</td>
+            <td>1</td>
+            <td>4.67504</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>0.96277</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>0.12399</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>0.00286</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>0.00000</td>
+        </tr>
+        <tr>
+            <td rowspan=5>3</td>
+            <td>1</td>
+            <td>3.46560</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>0.73704</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>0.08953</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>0.00000</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>0.00000</td>
+        </tr>
+        <tr>
+            <td rowspan=5>4</td>
+            <td>1</td>
+            <td>1.30327</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>0.28939</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>0.03807</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>0.00000</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>0.00000</td>
+        </tr>
+        <tr>
+            <td rowspan=5>5</td>
+            <td>1</td>
+            <td>0.26093</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>0.07313</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>0.00951</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>0.00000</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>0.00000</td>
+        </tr>
+    </tbody>
+</table>
+
+Tabela ima cenik za obremenitev omrežja, glede na uporabniško skupino in časovni blok:
+
+<table>
+    <thead>
+        <tr>
+            <th>Uporabniška skupina</th>
+            <th>Časovni Blok</th>
+            <th>Tarifna postavka za obremenitev omrežja<br>[EUR/kWh]</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td rowspan=5>0</td>
+            <td>1</td>
+            <td>0.01295</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>0.01224</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>0.01248</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>0.01246</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>0.01258</td>
+        </tr>
+        <tr>
+            <td rowspan=5>1</td>
+            <td>1</td>
+            <td>0.00783</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>0.00739</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>0.00757</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>0.00733</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>0.00739</td>
+        </tr>
+        <tr>
+            <td rowspan=5>3</td>
+            <td>1</td>
+            <td>0.00580</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>0.00541</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>0.00555</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>0.00530</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>0.00536</td>
+        </tr>
+        <tr>
+            <td rowspan=5>4</td>
+            <td>1</td>
+            <td>0.00131</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>0.00129</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>0.00128</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>0.00126</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>0.00125</td>
+        </tr>
+        <tr>
+            <td rowspan=5>5</td>
+            <td>1</td>
+            <td>0.00035</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>0.00035</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>0.00035</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>0.00035</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>0.00035</td>
+        </tr>
+    </tbody>
+</table>
 
 ## Primeri izračuna:
 
