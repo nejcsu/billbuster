@@ -122,6 +122,23 @@ class ElecticityPrice:
         
         return None
         
+    def GetPriceCatalogSIPX(self):
+        
+        with sqlite3.connect(self.DB) as conn:
+        
+            conn.row_factory = sqlite3.Row # This enables column access by name: row['column_name'] 
+            
+            X = conn.execute("SELECT TIME, PRICE FROM Price ORDER BY TIME DESC LIMIT 48");
+            
+            dictList = [dict(ix) for ix in X.fetchall()]
+            
+            for item in dictList:
+                item['TIME'] = datetime.utcfromtimestamp(item['TIME']).isoformat() + 'Z'
+        
+            return dictList;
+            
+        return None
+        
         
 def MAIN():
     
@@ -131,6 +148,9 @@ def MAIN():
         print("Main Thread")
         time.sleep(1)
         print(E.GetPriceSIPX("2024-10-01T10:01:15"));
+        print(E.GetPriceCatalogSIPX());
+        
+        
     
 if __name__ == '__main__':
     MAIN()
