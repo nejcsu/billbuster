@@ -1,6 +1,6 @@
 #!/bin/bash
 
-docker build --tag connector-sipx .
-docker run -d -p 8000:8000 connector-sipx
+docker rm --force connector-sipx
 
-pause
+docker build --tag connector-sipx .
+docker run -d -p 8000:8000 --name connector-sipx connector-sipx
