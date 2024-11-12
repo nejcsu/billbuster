@@ -49,7 +49,7 @@ class ElecticityPrice:
                 );
             ''');
             
-            conn.execute("INSERT INTO Market(NAME) VALUES ('SIPX') ON CONFLICT DO NOTHING");
+            conn.execute("INSERT INTO Market(NAME) VALUES ('SI') ON CONFLICT DO NOTHING");
             
             conn.commit();
         
@@ -126,14 +126,32 @@ class ElecticityPrice:
         
         with sqlite3.connect(self.DB) as conn:
         
-            conn.row_factory = sqlite3.Row # This enables column access by name: row['column_name'] 
+            conn.row_factory = sqlite3.Row
             
-            X = conn.execute("SELECT TIME, PRICE FROM Price ORDER BY TIME DESC LIMIT 48");
+            X = conn.execute(
+            '''
+                SELECT
+                    PRICE AS P,
+                    LAG (TIME, 1, 0) OVER (PARTITION BY MUID ORDER BY TIME) AS F,
+                    TIME AS T
+                FROM
+                    PRICE
+                INNER JOIN
+                    MARKET
+                    ON
+                    MARKET.UUID = PRICE.MUID
+                WHERE
+                    MARKET.NAME = 'SI'
+                ORDER BY
+                    TIME DESC
+                LIMIT 48;
+            ''');
             
             dictList = [dict(ix) for ix in X.fetchall()]
             
             for item in dictList:
-                item['TIME'] = datetime.utcfromtimestamp(item['TIME']).isoformat() + 'Z'
+                item['F'] = datetime.utcfromtimestamp(item['F']).isoformat() + 'Z'
+                item['T'] = datetime.utcfromtimestamp(item['T']).isoformat() + 'Z'
         
             return dictList;
             

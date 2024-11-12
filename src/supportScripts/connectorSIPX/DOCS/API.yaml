@@ -1,19 +1,19 @@
 openapi: 3.0.3
 info:
   title: Price Catalog API
-  description: API for retrieving price catalogs based on country ISO2 codes.
+  description: API for retrieving price catalogs based on country Name codes.
   version: 1.0.0
 
 paths:
   /API/priceCatalog/{index}:
     get:
       summary: Get price catalog for a specific country
-      description: Retrieves a list of price data for the specified country based on the ISO2 code.
+      description: Retrieves a list of price data for the specified country based on the Name code.
       parameters:
         - name: index
           in: path
           required: true
-          description: ISO2 country code
+          description: Name country code
           schema:
             type: string
             enum: ["SI"] # Add more country codes as needed
@@ -26,25 +26,29 @@ paths:
               schema:
                 type: object
                 properties:
-                  ISO2:
+                  Name:
                     type: string
-                    description: ISO2 country code
-                  prices:
+                    description: Name country code
+                  Price:
                     type: array
                     description: List of timestamped price entries
                     items:
                       type: object
                       properties:
-                        timestamp:
+                        F:
                           type: string
                           format: date-time
-                          description: ISO8601 formatted timestamp
-                        price:
+                          description: From - ISO8601 formatted timestamp
+                        T:
+                          type: string
+                          format: date-time
+                          description: To - ISO8601 formatted timestamp
+                        P:
                           type: number
                           format: float
-                          description: Price value at the given timestamp
+                          description: Price value (MWh) at the given time range
                 required:
-                  - ISO2
+                  - Name
                   - prices
         '400':
           description: Bad Request - Invalid ISO2 code format
