@@ -20,7 +20,7 @@ class WorkFreeDays:
         
         URL = "%s/%d/%s" % (self.HOST, isoDate.year, self.ISO2)
         
-#        print(URL);
+        print(URL);
         
         response = requests.request("GET", URL)
         

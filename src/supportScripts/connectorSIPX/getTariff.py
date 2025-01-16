@@ -2,7 +2,8 @@ import argparse
 import unittest
 from datetime import datetime
 
-from supportScripts.connectorWorkFreeDays.connectorWorkFreeDays import isWorkFreeDay
+from connectorWorkFreeDays import isWorkFreeDay
+
 
 # Define the updated tariff structure based on the table
 tariff_structure = {
@@ -61,8 +62,10 @@ def get_tariff(date_time: datetime, tariff_structure: dict) -> int:
     
     # Check if it's higher or lower season
     if higher_season_start <= date_time <= higher_season_end:
+        print("higher season")
         season = 'higher'
     else:
+        print("lower season")
         season = 'lower'
     
     # Check if it's a weekend or holiday
@@ -86,6 +89,19 @@ def get_tariff(date_time: datetime, tariff_structure: dict) -> int:
     # Default case if no period is matched (which shouldn't happen)
     return -1  # Error code, indicating no valid tariff found
 
+def gridPriceAtDatetime(date_time: datetime):
+    prices = {
+        1: 0.01958,
+        2: 0.01844,
+        3: 0.01837,
+        4: 0.01838,
+        5: 0.01873  # Prices for each tariff band (in EUR/kWh)
+    }
+
+    tariff = get_tariff(date_time, tariff_structure)
+    return prices[tariff]
+
+
 # Main function to accept date and time input from the command line
 def main():
     parser = argparse.ArgumentParser(description="Tariff calculation based on date and time.")
@@ -98,7 +114,8 @@ def main():
         # Parse the date and time input
         date_time_str = f"{args.date_input} {args.time_input}"
         date_time = datetime.strptime(date_time_str, "%Y-%m-%d %H:%M")
-        
+        print(f"Date and time input: {date_time}")
+
         # Get the tariff
         tariff = get_tariff(date_time, tariff_structure)
         print(f"The tariff band is: {tariff}")
