@@ -11,7 +11,7 @@ class WorkFreeDays:
         
         self.ISO2 = iso2
         
-        print("WorkFreeDays")
+#        print("WorkFreeDays")
     
     # TODO: Save API responses and optimize code
     def getPublicHolidays(self, isoDate):
@@ -20,13 +20,13 @@ class WorkFreeDays:
         
         URL = "%s/%d/%s" % (self.HOST, isoDate.year, self.ISO2)
         
-        print(URL);
+#        print(URL);
         
         response = requests.request("GET", URL)
         
-        print(response.text)
+#        print(response.text)
         
-        print(isoDate.isoformat())
+#        print(isoDate.isoformat())
         
         for day in json.loads(response.text):
             if(day["date"] == isoDate.isoformat()):
@@ -40,7 +40,7 @@ class WorkFreeDays:
         
         dayInfo = { "WorkFreeDay": False }
         
-        print(isoDate.month)
+ #       print(isoDate.month)
         
         if(isoDate.weekday() == 5): dayInfo["WorkFreeDay"] = True; # Saturday
         if(isoDate.weekday() == 6): dayInfo["WorkFreeDay"] = True; # Sunday
@@ -49,6 +49,13 @@ class WorkFreeDays:
             dayInfo["WorkFreeDay"] = self.getPublicHolidays(isoDate)
             
         return dayInfo;
+
+# This function will return True if the given date is a work-free day
+def isWorkFreeDay(DATE, countryIso2):
+    API = WorkFreeDays(countryIso2)
+    dayInfo = API.getDayInfo(DATE)
+    return dayInfo["WorkFreeDay"]
+
 
 def TEST():
     
