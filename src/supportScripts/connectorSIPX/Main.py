@@ -85,7 +85,7 @@ class ElecticityPrice:
         
         with sqlite3.connect(self.DB) as conn:
             for index, row in df.iterrows():
-                for i in range(1, 25):
+                for i in range(3, 27):
                     try:
                     
                         conn.execute(
@@ -215,7 +215,8 @@ class ElecticityPrice:
                 LIMIT 48;
             ''')
             
-            dictList = [{"time": datetime.utcfromtimestamp(row['T']).isoformat() + 'Z', 
+
+            dictList = [{"time": datetime.utcfromtimestamp(row['F']).isoformat() + 'Z', 
                           "price": addMockupAndGrid(row['P'],row['T'])} for row in X.fetchall()]
         
         return {"Prices": dictList}   
