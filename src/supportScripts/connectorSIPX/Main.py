@@ -222,7 +222,7 @@ class ElecticityPrice:
         return {"Prices": dictList}   
 
 def addMockupAndGrid(price,dateTime):
-    mockup = 0.015
+    mockup = 0.013
 #    print(gridPriceAtDatetime(dateTime))    
     return round(price/1000 + mockup, 5)
 
