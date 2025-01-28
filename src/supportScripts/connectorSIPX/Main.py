@@ -8,6 +8,8 @@ import threading
 
 from datetime import datetime, timedelta
 from dateutil import parser
+from getTariff import gridPriceAtDatetime
+
 
 class ElecticityPrice:
     
@@ -83,7 +85,7 @@ class ElecticityPrice:
         
         with sqlite3.connect(self.DB) as conn:
             for index, row in df.iterrows():
-                for i in range(1, 25):
+                for i in range(3, 27):
                     try:
                     
                         conn.execute(
@@ -123,9 +125,23 @@ class ElecticityPrice:
         return None
         
     def GetPriceCatalogSIPX(self):
-        
+        """
+        Retrieves the price catalog for the 'SI' market from the database.
+    
+        This method connects to the SQLite database specified by the instance's 
+        DB attribute and executes a SQL query to fetch the latest 48 price records 
+        for the market named 'SI'. The query uses a window function to get the 
+        previous price time for each record.
+    
+        The results are processed to convert the timestamps from Unix format to 
+        ISO 8601 format with a 'Z' suffix indicating UTC time.
+    
+        Returns:
+            list: A list of dictionaries, each containing the price, previous 
+                  price time, and current time in ISO 8601 format. Returns None 
+                  if no records are found.
+        """
         with sqlite3.connect(self.DB) as conn:
-        
             conn.row_factory = sqlite3.Row
             
             X = conn.execute(
@@ -145,7 +161,7 @@ class ElecticityPrice:
                 ORDER BY
                     TIME DESC
                 LIMIT 48;
-            ''');
+            ''')
             
             dictList = [dict(ix) for ix in X.fetchall()]
             
@@ -153,23 +169,81 @@ class ElecticityPrice:
                 item['F'] = datetime.utcfromtimestamp(item['F']).isoformat() + 'Z'
                 item['T'] = datetime.utcfromtimestamp(item['T']).isoformat() + 'Z'
         
-            return dictList;
-            
+            return dictList
+        
         return None
         
+    def GetAdjustedPrices(self):
+        """
+        Retrieves the adjusted prices for the 'SI' market from the database.
+
+        This method connects to the SQLite database specified by the instance's 
+        DB attribute and executes a SQL query to fetch the adjusted price records 
+        for the market named 'SI'. The results are processed to convert the 
+        timestamps from Unix format to ISO 8601 format with a 'Z' suffix indicating UTC time.
+
+        Returns:
+            dict: A dictionary containing a list of adjusted prices with their 
+                corresponding timestamps. The format is:
+                {
+                    "prices": [
+                        {"time": "2025-01-16T00:00:00Z", "price": 0.10},
+                        ...
+                    ]
+                }
+            Returns an empty dictionary if no records are found.
+        """
+        with sqlite3.connect(self.DB) as conn:
+            conn.row_factory = sqlite3.Row
+            
+            X = conn.execute(
+            '''
+                  SELECT
+                    PRICE AS P,
+                    LAG (TIME, 1, 0) OVER (PARTITION BY MUID ORDER BY TIME) AS F,
+                    TIME AS T
+                FROM
+                    PRICE
+                INNER JOIN
+                    MARKET
+                    ON
+                    MARKET.UUID = PRICE.MUID
+                WHERE
+                    MARKET.NAME = 'SI'
+                ORDER BY
+                    TIME DESC
+                LIMIT 48;
+            ''')
+            
+
+            dictList = [{"time": datetime.utcfromtimestamp(row['F']).isoformat() + 'Z', 
+                          "price": addMockupAndGrid(row['P'],row['T'])} for row in X.fetchall()]
         
+        return {"Prices": dictList}   
+
+def addMockupAndGrid(price,dateTime):
+    mockup = 0.013
+#    print(gridPriceAtDatetime(dateTime))    
+    return round(price/1000 + mockup, 5)
+
 def MAIN():
     
     E = ElecticityPrice()
-    
+
+    '''  
     while True:
         print("Main Thread")
         time.sleep(1)
         print(E.GetPriceSIPX("2024-10-01T10:01:15"));
         print(E.GetPriceCatalogSIPX());
         
-        
-    
+    '''         
+    dt = "2025-01-16T13:01:15"
+    print(E.GetPriceSIPX(dt))
+
+    print(addMockupAndGrid(gridPriceAtDatetime(dt),dt))
+     
+
 if __name__ == '__main__':
     MAIN()
 

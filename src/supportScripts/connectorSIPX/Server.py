@@ -4,6 +4,7 @@ from flask import Flask
 from flask import request
 from flask import jsonify
 from flask import send_from_directory
+
     
 from flask_swagger_ui import get_swaggerui_blueprint
 
@@ -37,6 +38,13 @@ def getPriceCatalog(index):
     res = { "Name": index.upper(), "Price": ep.GetPriceCatalogSIPX() }
     
     return jsonify(res);
+
+@app.route('/API/adjustedPrices/<index>', methods=['GET'])
+def getAdjustedPrices(index):
+    
+   
+    
+    return jsonify(ep.GetAdjustedPrices());
     
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port='8000', debug=True)
