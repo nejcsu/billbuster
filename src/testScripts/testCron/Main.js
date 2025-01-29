@@ -1,6 +1,8 @@
 var parser = require('cron-parser');
 const test = require('node:test');
 var assert = require('assert');
+var sprintf = require('sprintf-js').sprintf;
+
 const Moment = require('moment');
 const MomentRange = require('moment-range');
  
@@ -12,43 +14,111 @@ class ParseBlok
     {
         this.BlokSpec =
         [
-            { blokID: 2, workDay: true, from: '00 00 07 * 03-10 *', to  : '59 59 13 * 03-10 *' }, // Nižja sezona
-            { blokID: 2, workDay: true, from: '00 00 16 * 03-10 *', to  : '59 59 19 * 03-10 *' }, // Nižja sezona
-            { blokID: 2, workDay: true, from: '00 00 06 * 11-12 *', to  : '59 59 06 * 11-12 *' }, // Višja sezona
-            { blokID: 2, workDay: true, from: '00 00 14 * 11-12 *', to  : '59 59 15 * 11-12 *' }, // Višja sezona
-            { blokID: 2, workDay: true, from: '00 00 20 * 11-12 *', to  : '59 59 21 * 11-12 *' }, // Višja sezona
-            { blokID: 2, workDay: true, from: '00 00 06 * 01-02 *', to  : '59 59 06 * 01-02 *' }, // Višja sezona
-            { blokID: 2, workDay: true, from: '00 00 14 * 01-02 *', to  : '59 59 15 * 01-02 *' }, // Višja sezona
-            { blokID: 2, workDay: true, from: '00 00 20 * 01-02 *', to  : '59 59 21 * 01-02 *' }, // Višja sezona
+            { blokID: 1, workDay: true , from: '00 00 07 * 01-02,11-12 *', to  : '59 59 13 * 01-02,11-12 *' }, // Višja sezona
+            { blokID: 1, workDay: true , from: '00 00 16 * 01-02,11-12 *', to  : '59 59 19 * 01-02,11-12 *' }, // Višja sezona            
+                                                                
+            { blokID: 2, workDay: true , from: '00 00 06 * 01-02,11-12 *', to  : '59 59 06 * 01-02,11-12 *' }, // Višja sezona
+            { blokID: 2, workDay: true , from: '00 00 14 * 01-02,11-12 *', to  : '59 59 15 * 01-02,11-12 *' }, // Višja sezona
+            { blokID: 2, workDay: true , from: '00 00 20 * 01-02,11-12 *', to  : '59 59 21 * 01-02,11-12 *' }, // Višja sezona
+            { blokID: 2, workDay: true , from: '00 00 07 * 03-10       *', to  : '59 59 13 * 03-10       *' }, // Nižja sezona
+            { blokID: 2, workDay: true , from: '00 00 16 * 03-10       *', to  : '59 59 19 * 03-10       *' }, // Nižja sezona
+            { blokID: 2, workDay: false, from: '00 00 07 * 01-02,11-12 *', to  : '59 59 13 * 01-02,11-12 *' }, // Višja sezona
+            { blokID: 2, workDay: false, from: '00 00 16 * 01-02,11-12 *', to  : '59 59 19 * 01-02,11-12 *' }, // Višja sezona
+            
+            { blokID: 3, workDay: true , from: '00 00 00 * 01-02,11-12 *', to  : '59 59 05 * 01-02,11-12 *' }, // Višja sezona
+            { blokID: 3, workDay: true , from: '00 00 22 * 01-02,11-12 *', to  : '59 59 23 * 01-02,11-12 *' }, // Višja sezona
+            { blokID: 3, workDay: true , from: '00 00 06 * 03-10       *', to  : '59 59 06 * 03-10       *' }, // Nižja sezona
+            { blokID: 3, workDay: true , from: '00 00 14 * 03-10       *', to  : '59 59 15 * 03-10       *' }, // Nižja sezona
+            { blokID: 3, workDay: true , from: '00 00 20 * 03-10       *', to  : '59 59 21 * 03-10       *' }, // Nižja sezona
+            { blokID: 3, workDay: false, from: '00 00 06 * 01-02,11-12 *', to  : '59 59 06 * 01-02,11-12 *' }, // Višja sezona
+            { blokID: 3, workDay: false, from: '00 00 14 * 01-02,11-12 *', to  : '59 59 15 * 01-02,11-12 *' }, // Višja sezona
+            { blokID: 3, workDay: false, from: '00 00 20 * 01-02,11-12 *', to  : '59 59 21 * 01-02,11-12 *' }, // Višja sezona
+            { blokID: 3, workDay: false, from: '00 00 07 * 03-10       *', to  : '59 59 13 * 03-10       *' }, // Nižja sezona
+            { blokID: 3, workDay: false, from: '00 00 16 * 03-10       *', to  : '59 59 19 * 03-10       *' }, // Nižja sezona
+            
+            { blokID: 4, workDay: true , from: '00 00 00 * 03-10       *', to  : '59 59 05 * 03-10       *' }, // Nižja sezona
+            { blokID: 4, workDay: true , from: '00 00 22 * 03-10       *', to  : '59 59 23 * 03-10       *' }, // Nižja sezona
+            { blokID: 4, workDay: false, from: '00 00 00 * 01-02,11-12 *', to  : '59 59 05 * 01-02,11-12 *' }, // Višja sezona
+            { blokID: 4, workDay: false, from: '00 00 22 * 01-02,11-12 *', to  : '59 59 23 * 01-02,11-12 *' }, // Višja sezona
+            { blokID: 4, workDay: false, from: '00 00 06 * 03-10       *', to  : '59 59 06 * 03-10       *' }, // Nižja sezona
+            { blokID: 4, workDay: false, from: '00 00 14 * 03-10       *', to  : '59 59 15 * 03-10       *' }, // Nižja sezona
+            { blokID: 4, workDay: false, from: '00 00 20 * 03-10       *', to  : '59 59 21 * 03-10       *' }, // Nižja sezona
+            
+            { blokID: 5, workDay: false, from: '00 00 00 * 03-10       *', to  : '59 59 05 * 03-10       *' }, // Nižja sezona
+            { blokID: 5, workDay: false, from: '00 00 22 * 03-10       *', to  : '59 59 23 * 03-10       *' }, // Nižja sezona
         ];
+    }
+    
+    printBlokSpec()
+    {
+        let seasonList =
+        [
+            { name: "Visja", months: [ 11, 12, 1, 2 ] },
+            { name: "Nizja", months: [ 3, 4, 5, 6, 7, 8, 9, 10 ] }
+        ];
+        
+        let txt = "";
+        
+        txt = txt + sprintf("==========================================================================================================\n");
+        
+        txt = txt + sprintf("| Obdobje                |");
+        
+        for(let i = 1; i <= 5; i++)
+        {
+            txt = txt + sprintf("     CB %d      |", i);
+        }
+            
+        txt = txt + sprintf("\n");
+        
+        txt = txt + sprintf("==========================================================================================================\n");
+        
+        for(let [s, season] of seasonList.entries())
+        {
+            for(let workDay of [ true, false ])
+            {
+                for(let i = 0; i < 3; i++)
+                {
+                    txt = txt + sprintf("|%8s|%15s|", season.name, workDay ? "delovni dan" : "dela prost dan");
+                    
+                    for(let b = 1; b <= 5; b++)
+                    {
+                        let blok = this.BlokSpec.filter(x => x.blokID === b && x.workDay === workDay && parser.parseExpression(x.from).fields.month.includes(season.months[0]));
+                        
+                        if(!blok || blok.length <= i) { txt = txt + sprintf("               |"); continue; }
+                        
+                        let from = parser.parseExpression(blok[i].from).fields.hour[0] + 0;
+                        let to   = parser.parseExpression(blok[i].to  ).fields.hour[0] + 1;
+                        
+                        txt = txt + sprintf(" %2d:00 > %2d:00 |", from, to);
+                    }
+                    
+                    if(i < 2) { txt = txt + sprintf("\n"); }
+                }
+                
+                txt = txt + sprintf("\n");
+                
+                if(s < 1 || workDay) { txt = txt + sprintf("----------------------------------------------------------------------------------------------------------\n"); }
+            }
+        }
+        
+        txt = txt + sprintf("==========================================================================================================\n");
+        
+        console.log(txt);
     }
     
     getBlokID(date)
     {
         for(let BlokTime of this.BlokSpec)
         {
-            // console.log(BlokTime);
-            
             let parseFrom = parser.parseExpression(BlokTime.from, { currentDate: moment(date).add(1, "seconds").toISOString() });
             let parseTo   = parser.parseExpression(BlokTime.to,   { currentDate: moment(date).add(1, "seconds").toISOString() });
             
-            // console.log(parseFrom.prev());
-            // console.log(parseTo.next());
-            
             const range = moment.range(parseFrom.prev().toISOString(), parseTo.next().toISOString());
-            
-            // console.log(range);
             
             if(range.diff('days') === 0 && range.contains(moment(date)))
             {
-                // console.log(range);
                 return BlokTime.blokID;
             }
-            
-            // console.log(moment(date));
-            // console.log(range);
-            // console.log(range.diff('days'));
-            // console.log(range.contains(moment(date)));
         }
         
         return null;
@@ -61,22 +131,11 @@ async function TEST()
     if(require.main === module)
     {
         let BlokSpec = new ParseBlok();
-        
-        console.log(BlokSpec.getBlokID('2025-01-28T14:00:00+01:00'));
-        
-        // const cron = parser.parseExpression('0 0 7  * 03-10 *', { currentDate: '2025-01-28 00:00:01' });
-        // 
-        // console.log(cron.next().toString())
-        // console.log(cron.next().toString())
-        // console.log(cron.next().toString())
-        // console.log(cron.next().toString())
-        // console.log(cron.next().toString())
-        // console.log(cron.next().toString())
-        // console.log(cron.next().toString())
-        
+     
+        BlokSpec.printBlokSpec();
+                
         test('Blok ID2:', (t) => { assert.strictEqual(BlokSpec.getBlokID('2025-01-28T14:00:00+01:00'), 2); });
 
-        
     }
 }
 

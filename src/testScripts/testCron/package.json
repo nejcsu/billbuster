@@ -11,6 +11,7 @@
   "dependencies": {
     "cron-parser": "^4.9.0",
     "cron-schedule": "^5.0.4",
-    "moment-range": "^4.0.2"
+    "moment-range": "^4.0.2",
+    "sprintf-js": "^1.1.3"
   }
 }
