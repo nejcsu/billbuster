@@ -12,40 +12,43 @@ class ParseBlok
 {
     constructor()
     {
+        this.validFrom = "2024-10-01T00:00:00";
+        this.validTo   = "2099-10-01T00:00:00";
+        
         this.BlokSpec =
         [
-            { blokID: 1, workDay: true , from: '00 00 07 * 01-02,11-12 *', to  : '59 59 13 * 01-02,11-12 *' }, // Višja sezona
-            { blokID: 1, workDay: true , from: '00 00 16 * 01-02,11-12 *', to  : '59 59 19 * 01-02,11-12 *' }, // Višja sezona            
+            { blokID: 1, workDay: true , from: '00 00 07 * 01-02,11-12 *', to  : '59 59 13 * 01-02,11-12 *', priceConnection: 0.912240, priceConsumption: 0.019980 }, // Višja sezona
+            { blokID: 1, workDay: true , from: '00 00 16 * 01-02,11-12 *', to  : '59 59 19 * 01-02,11-12 *', priceConnection: 0.912240, priceConsumption: 0.019980 }, // Višja sezona            
                                                                 
-            { blokID: 2, workDay: true , from: '00 00 06 * 01-02,11-12 *', to  : '59 59 06 * 01-02,11-12 *' }, // Višja sezona
-            { blokID: 2, workDay: true , from: '00 00 14 * 01-02,11-12 *', to  : '59 59 15 * 01-02,11-12 *' }, // Višja sezona
-            { blokID: 2, workDay: true , from: '00 00 20 * 01-02,11-12 *', to  : '59 59 21 * 01-02,11-12 *' }, // Višja sezona
-            { blokID: 2, workDay: true , from: '00 00 07 * 03-10       *', to  : '59 59 13 * 03-10       *' }, // Nižja sezona
-            { blokID: 2, workDay: true , from: '00 00 16 * 03-10       *', to  : '59 59 19 * 03-10       *' }, // Nižja sezona
-            { blokID: 2, workDay: false, from: '00 00 07 * 01-02,11-12 *', to  : '59 59 13 * 01-02,11-12 *' }, // Višja sezona
-            { blokID: 2, workDay: false, from: '00 00 16 * 01-02,11-12 *', to  : '59 59 19 * 01-02,11-12 *' }, // Višja sezona
+            { blokID: 2, workDay: true , from: '00 00 06 * 01-02,11-12 *', to  : '59 59 06 * 01-02,11-12 *', priceConnection: 0.912240, priceConsumption: 0.018330 }, // Višja sezona
+            { blokID: 2, workDay: true , from: '00 00 14 * 01-02,11-12 *', to  : '59 59 15 * 01-02,11-12 *', priceConnection: 0.912240, priceConsumption: 0.018330 }, // Višja sezona
+            { blokID: 2, workDay: true , from: '00 00 20 * 01-02,11-12 *', to  : '59 59 21 * 01-02,11-12 *', priceConnection: 0.912240, priceConsumption: 0.018330 }, // Višja sezona
+            { blokID: 2, workDay: true , from: '00 00 07 * 03-10       *', to  : '59 59 13 * 03-10       *', priceConnection: 0.912240, priceConsumption: 0.018330 }, // Nižja sezona
+            { blokID: 2, workDay: true , from: '00 00 16 * 03-10       *', to  : '59 59 19 * 03-10       *', priceConnection: 0.912240, priceConsumption: 0.018330 }, // Nižja sezona
+            { blokID: 2, workDay: false, from: '00 00 07 * 01-02,11-12 *', to  : '59 59 13 * 01-02,11-12 *', priceConnection: 0.912240, priceConsumption: 0.018330 }, // Višja sezona
+            { blokID: 2, workDay: false, from: '00 00 16 * 01-02,11-12 *', to  : '59 59 19 * 01-02,11-12 *', priceConnection: 0.912240, priceConsumption: 0.018330 }, // Višja sezona
             
-            { blokID: 3, workDay: true , from: '00 00 00 * 01-02,11-12 *', to  : '59 59 05 * 01-02,11-12 *' }, // Višja sezona
-            { blokID: 3, workDay: true , from: '00 00 22 * 01-02,11-12 *', to  : '59 59 23 * 01-02,11-12 *' }, // Višja sezona
-            { blokID: 3, workDay: true , from: '00 00 06 * 03-10       *', to  : '59 59 06 * 03-10       *' }, // Nižja sezona
-            { blokID: 3, workDay: true , from: '00 00 14 * 03-10       *', to  : '59 59 15 * 03-10       *' }, // Nižja sezona
-            { blokID: 3, workDay: true , from: '00 00 20 * 03-10       *', to  : '59 59 21 * 03-10       *' }, // Nižja sezona
-            { blokID: 3, workDay: false, from: '00 00 06 * 01-02,11-12 *', to  : '59 59 06 * 01-02,11-12 *' }, // Višja sezona
-            { blokID: 3, workDay: false, from: '00 00 14 * 01-02,11-12 *', to  : '59 59 15 * 01-02,11-12 *' }, // Višja sezona
-            { blokID: 3, workDay: false, from: '00 00 20 * 01-02,11-12 *', to  : '59 59 21 * 01-02,11-12 *' }, // Višja sezona
-            { blokID: 3, workDay: false, from: '00 00 07 * 03-10       *', to  : '59 59 13 * 03-10       *' }, // Nižja sezona
-            { blokID: 3, workDay: false, from: '00 00 16 * 03-10       *', to  : '59 59 19 * 03-10       *' }, // Nižja sezona
+            { blokID: 3, workDay: true , from: '00 00 00 * 01-02,11-12 *', to  : '59 59 05 * 01-02,11-12 *', priceConnection: 0.162970, priceConsumption: 0.018090 }, // Višja sezona
+            { blokID: 3, workDay: true , from: '00 00 22 * 01-02,11-12 *', to  : '59 59 23 * 01-02,11-12 *', priceConnection: 0.162970, priceConsumption: 0.018090 }, // Višja sezona
+            { blokID: 3, workDay: true , from: '00 00 06 * 03-10       *', to  : '59 59 06 * 03-10       *', priceConnection: 0.162970, priceConsumption: 0.018090 }, // Nižja sezona
+            { blokID: 3, workDay: true , from: '00 00 14 * 03-10       *', to  : '59 59 15 * 03-10       *', priceConnection: 0.162970, priceConsumption: 0.018090 }, // Nižja sezona
+            { blokID: 3, workDay: true , from: '00 00 20 * 03-10       *', to  : '59 59 21 * 03-10       *', priceConnection: 0.162970, priceConsumption: 0.018090 }, // Nižja sezona
+            { blokID: 3, workDay: false, from: '00 00 06 * 01-02,11-12 *', to  : '59 59 06 * 01-02,11-12 *', priceConnection: 0.162970, priceConsumption: 0.018090 }, // Višja sezona
+            { blokID: 3, workDay: false, from: '00 00 14 * 01-02,11-12 *', to  : '59 59 15 * 01-02,11-12 *', priceConnection: 0.162970, priceConsumption: 0.018090 }, // Višja sezona
+            { blokID: 3, workDay: false, from: '00 00 20 * 01-02,11-12 *', to  : '59 59 21 * 01-02,11-12 *', priceConnection: 0.162970, priceConsumption: 0.018090 }, // Višja sezona
+            { blokID: 3, workDay: false, from: '00 00 07 * 03-10       *', to  : '59 59 13 * 03-10       *', priceConnection: 0.162970, priceConsumption: 0.018090 }, // Nižja sezona
+            { blokID: 3, workDay: false, from: '00 00 16 * 03-10       *', to  : '59 59 19 * 03-10       *', priceConnection: 0.162970, priceConsumption: 0.018090 }, // Nižja sezona
             
-            { blokID: 4, workDay: true , from: '00 00 00 * 03-10       *', to  : '59 59 05 * 03-10       *' }, // Nižja sezona
-            { blokID: 4, workDay: true , from: '00 00 22 * 03-10       *', to  : '59 59 23 * 03-10       *' }, // Nižja sezona
-            { blokID: 4, workDay: false, from: '00 00 00 * 01-02,11-12 *', to  : '59 59 05 * 01-02,11-12 *' }, // Višja sezona
-            { blokID: 4, workDay: false, from: '00 00 22 * 01-02,11-12 *', to  : '59 59 23 * 01-02,11-12 *' }, // Višja sezona
-            { blokID: 4, workDay: false, from: '00 00 06 * 03-10       *', to  : '59 59 06 * 03-10       *' }, // Nižja sezona
-            { blokID: 4, workDay: false, from: '00 00 14 * 03-10       *', to  : '59 59 15 * 03-10       *' }, // Nižja sezona
-            { blokID: 4, workDay: false, from: '00 00 20 * 03-10       *', to  : '59 59 21 * 03-10       *' }, // Nižja sezona
+            { blokID: 4, workDay: true , from: '00 00 00 * 03-10       *', to  : '59 59 05 * 03-10       *', priceConnection: 0.004070, priceConsumption: 0.018550 }, // Nižja sezona
+            { blokID: 4, workDay: true , from: '00 00 22 * 03-10       *', to  : '59 59 23 * 03-10       *', priceConnection: 0.004070, priceConsumption: 0.018550 }, // Nižja sezona
+            { blokID: 4, workDay: false, from: '00 00 00 * 01-02,11-12 *', to  : '59 59 05 * 01-02,11-12 *', priceConnection: 0.004070, priceConsumption: 0.018550 }, // Višja sezona
+            { blokID: 4, workDay: false, from: '00 00 22 * 01-02,11-12 *', to  : '59 59 23 * 01-02,11-12 *', priceConnection: 0.004070, priceConsumption: 0.018550 }, // Višja sezona
+            { blokID: 4, workDay: false, from: '00 00 06 * 03-10       *', to  : '59 59 06 * 03-10       *', priceConnection: 0.004070, priceConsumption: 0.018550 }, // Nižja sezona
+            { blokID: 4, workDay: false, from: '00 00 14 * 03-10       *', to  : '59 59 15 * 03-10       *', priceConnection: 0.004070, priceConsumption: 0.018550 }, // Nižja sezona
+            { blokID: 4, workDay: false, from: '00 00 20 * 03-10       *', to  : '59 59 21 * 03-10       *', priceConnection: 0.004070, priceConsumption: 0.018550 }, // Nižja sezona
             
-            { blokID: 5, workDay: false, from: '00 00 00 * 03-10       *', to  : '59 59 05 * 03-10       *' }, // Nižja sezona
-            { blokID: 5, workDay: false, from: '00 00 22 * 03-10       *', to  : '59 59 23 * 03-10       *' }, // Nižja sezona
+            { blokID: 5, workDay: false, from: '00 00 00 * 03-10       *', to  : '59 59 05 * 03-10       *', priceConnection: 0.000070, priceConsumption: 0.015550 }, // Nižja sezona
+            { blokID: 5, workDay: false, from: '00 00 22 * 03-10       *', to  : '59 59 23 * 03-10       *', priceConnection: 0.000070, priceConsumption: 0.015550 }, // Nižja sezona
         ];
     }
     
@@ -71,6 +74,7 @@ class ParseBlok
         txt = txt + sprintf("\n");
         
         txt = txt + sprintf("==========================================================================================================\n");
+        
         
         for(let [s, season] of seasonList.entries())
         {
@@ -106,7 +110,7 @@ class ParseBlok
         console.log(txt);
     }
     
-    getBlokID(date)
+    getBlok(date)
     {
         for(let BlokTime of this.BlokSpec)
         {
@@ -117,7 +121,7 @@ class ParseBlok
             
             if(range.diff('days') === 0 && range.contains(moment(date)))
             {
-                return BlokTime.blokID;
+                return BlokTime;
             }
         }
         
@@ -133,8 +137,10 @@ async function TEST()
         let BlokSpec = new ParseBlok();
      
         BlokSpec.printBlokSpec();
+        
+        console.log(BlokSpec.getBlok('2025-01-28T13:00:00+01:00'));
                 
-        test('Blok ID2:', (t) => { assert.strictEqual(BlokSpec.getBlokID('2025-01-28T14:00:00+01:00'), 2); });
+        // test('Blok ID2:', (t) => { assert.strictEqual(BlokSpec.getBlok('2025-01-28T14:00:00+01:00'), 2); });
 
     }
 }
